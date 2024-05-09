@@ -1,0 +1,169 @@
+.settings-wrapper {
+  display: flex;
+  padding-top: 50px;
+  align-items: flex-start;
+}
+
+.settings-body {
+  border: 1px solid #e3e4ec;
+  border-radius: 2px;
+  padding: 24px 40px;
+  width: 640px;
+}
+
+.profile-body {
+  border: 1px solid #e3e4ec;
+  border-radius: 2px;
+  padding: 24px 30px;
+  margin-left: 40px;
+  flex: 1;
+}
+
+.settings-body > h1,
+.profile-body > h1 {
+  font-size: 22px;
+  font-weight: 500;
+  position: relative;
+  display: block;
+  width: fit-content;
+}
+
+.settings-body > h1::after,
+.profile-body > h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 60%;
+  background-color: black;
+  bottom: -7px;
+  height: 3px;
+}
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  margin-top: 50px;
+}
+
+.settings-form label {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.settings-form input {
+  min-width: 290px;
+  border-radius: 3px;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.settings-form .button {
+  width: 140px;
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.settings-input-file {
+  width: 90px;
+  border-radius: 3px;
+  margin-bottom: 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  height: 90px;
+  background-color: #bdbdbd;
+  margin-top: 25px;
+}
+
+.settings-input-file > img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.settings-input-file > img.avatar-uploaded {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.edit-button-container {
+  position: absolute;
+  top: -4px;
+  right: -7px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #bdbdbd;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.edit-button-container:hover {
+  border-color: black;
+  transform: scale(1.1);
+}
+
+.edit-button {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  transform: translateX(1px);
+  position: relative;
+}
+
+.eye-toggle {
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  z-index: 100;
+  padding: 0 0 0 10px;
+  background: white;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.profile-body-scores {
+  display: flex;
+  margin-top: 50px;
+  justify-content: space-around;
+}
+
+.profile-body-scores > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-body-scores > div > h6,
+.profile-body-scores > div > p {
+  font-weight: 400;
+}
+
+.profile-body-scores > div > h6 {
+  font-size: 20px;
+}
+.profile-body-scores > div > p {
+  font-size: 13px;
+}
+
+.profile-body-bottom {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+.profile-body .button {
+  width: 200px;
+  margin-top: 50px;
+  padding: 10px;
+}

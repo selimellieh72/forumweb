@@ -1,0 +1,94 @@
+.container {
+  width: 100%;
+  margin-top: 50px;
+  position: relative;
+}
+.tableee {
+  max-height: 70vh;
+  overflow-y: scroll;
+}
+
+.container h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+}
+.container h2 small {
+  font-size: 0.5em;
+}
+.settings-wrapper-users {
+  padding-bottom: 50px;
+}
+
+.responsive-table li {
+  border-radius: 4px;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.profile-info h6 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.profile-info p {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgb(174, 174, 174);
+  margin-top: 2px;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.responsive-table .table-header {
+  background-color: #fdc07d;
+  color: #ffffff;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.responsive-table .table-row {
+  background-color: #ffffff;
+  border: 1px solid #e3e4ec;
+}
+.responsive-table .col-1 {
+  flex-basis: 10%;
+}
+.responsive-table .col-2 {
+  flex-basis: 40%;
+}
+.responsive-table .col-3 {
+  flex-basis: 25%;
+}
+.responsive-table .col-4 {
+  flex-basis: 25%;
+}
+.table-row img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  margin-left: 6px;
+}
+
+.status {
+  height: 35px;
+  padding: 0px 20px;
+  font-size: 14px;
+  display: flex;
+  border-radius: 80px;
+  align-items: center;
+  justify-content: center;
+}
+
+.col-4 .button {
+  padding: 10px 15px;
+  background-color: brown;
+  border: 1px solid brown;
+  border-radius: 4px;
+}
+
+.col-4 .button:hover {
+  background-color: white;
+  color: brown;
+}
