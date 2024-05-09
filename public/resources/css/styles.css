@@ -26,6 +26,11 @@
   border-radius: 1px;
 }
 
+a.button {
+  text-decoration: none;
+  
+}
+
 /* Outlined Button */
 .button-outlined {
   border: 1px solid black;
@@ -44,6 +49,7 @@
   border: 1px solid black;
   color: white;
 }
+
 .button-filled:hover {
   background-color: white;
   color: black;

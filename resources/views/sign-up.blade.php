@@ -70,7 +70,7 @@
         <!-- Upper Content -->
         <div class="upper-container">
           <p class="upper-text">Already have an account?</p>
-          <button class="button button-outlined upper-button">Login</button>
+          <a href="{{route('login')}}" class="button button-outlined upper-button">Login</a>
         </div>
 
         <!-- Body Content -->
@@ -82,7 +82,8 @@
               Dive Into Discussions, Engage with Enthusiasts, Share Your Stories
             </h6>
           </div>
-          <form class="signup-container-form">
+          <form method="post" class="signup-container-form">
+            @csrf
             <div
               class="input-primary signup-input-file"
               id="profileImageContainer"

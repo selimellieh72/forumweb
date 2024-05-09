@@ -31,7 +31,7 @@
       <!-- Upper Links -->
       <div class="upper-container">
         <p class="upper-text">Don't have an account yet?</p>
-        <button class="button button-outlined upper-button">Sign up</button>
+        <a href="{{route('register')}}" class="button button-outlined upper-button">Sign up</a>
       </div>
       <!-- Main Body -->
       <div class="main-container">
@@ -40,7 +40,8 @@
           <h1>Forum</h1>
           <h6>Hello, who’s this?</h6>
         </div>
-        <form class="main-container-form">
+        <form method="post" class="main-container-form">
+          @csrf
           <label class="label-primary" for="email">Email</label>
           <input
             placeholder="tony@gmail.com"
@@ -65,7 +66,9 @@
             </div>
           </div>
           <p class="forgot-password">Forgot Password?</p>
-
+          @error('email')
+            <span class="error">{{$message}}</span>
+          @enderror
           <button class="button button-filled">Log In to Forum</button>
         </form>
       </div>

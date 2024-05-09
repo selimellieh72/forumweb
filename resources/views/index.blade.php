@@ -30,8 +30,23 @@
       </div>
       <!-- Right Content -->
       <div class="navbar-right">
+        @auth
         <button class="button button-filled">Create a post</button>
-        <button class="button button-filled">Log in</button>
+        
+        <button  class="button button-filled"
+        onclick="event.preventDefault(); document.querySelector('form').submit();"
+        >Log out</button>
+        <form action="{{ route('logout') }}" method="post">
+          @csrf
+          <input type="hidden" name="logout" value="1" />
+ 
+        </form>
+        @endauth
+
+        @guest
+        <a href="{{route('login')}}" class="button button-filled">Log in</a>
+        @endguest
+
       </div>
     </div>
 
@@ -208,10 +223,14 @@
       </div>
     </div>
     <!-- Footer -->
+    @guest
+      
+
     <div class="footer">
       <h1>Ready to get stuck in?</h1>
       <button class="button button-filled">Sign Up Now</button>
     </div>
+    @endguest
     <div class="last-footer">
       <p>© Forum</p>
       <p>Tony Kosseify - Selim Ellieh</p>
@@ -277,12 +296,15 @@
 
       // Open the modal
       // Open the modal
+      @auth
       btn.onclick = function () {
         modal.style.visibility = "visible";
         modal.style.opacity = "1";
         modalOverlay.style.visibility = "visible";
         modalOverlay.style.opacity = "1";
       };
+      @endauth
+    
 
       // Close the modal when clicking on (x)
       span.onclick = function () {
