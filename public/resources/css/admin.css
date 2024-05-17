@@ -86,9 +86,21 @@
   background-color: brown;
   border: 1px solid brown;
   border-radius: 4px;
+  width: 96px;
+}
+
+.col-4 .button.positive {
+  background-color: green;
+  border: 1px solid green;
+
 }
 
 .col-4 .button:hover {
   background-color: white;
   color: brown;
+}
+
+.col-4 .button.positive:hover {
+  background-color: white;
+  color: green;
 }

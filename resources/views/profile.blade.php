@@ -32,12 +32,52 @@
     <div class="navbar">
       <!-- Left Content -->
       <div class="navbar-left">
-        <h1>Forum</h1>
+       <a href="{{route('home')}}">
+       <h1>Forum</h1>
+       </a>
       </div>
       <!-- Right Content -->
       <div class="navbar-right">
-        <button class="button button-filled">Create a post</button>
-        <button class="button button-filled">Log in</button>
+     
+        
+      @auth
+        @if (Auth::user()->disabled)
+          <button class="button button-filled" disabled>Account Disabled</button>
+   
+        @endif
+       
+        <form action="{{ route('logout') }}" method="post">
+          @csrf
+          <input type="hidden" name="logout" value="1" />
+ 
+        </form>
+        <button  class="button button-filled"
+        onclick="event.preventDefault(); document.querySelector('form').submit();"
+        >Log out</button>
+      
+        <a href="{{route('profile')}}"> 
+              
+        <div class="circle"
+        {{
+        Auth::user()->avatar? 'style=background-image:url('.asset('storage/' . Auth::user()->avatar).')' : ''
+        }} 
+        >
+       
+        
+        {!! 
+            !Auth::user()->avatar ? 
+            '<span class="initials">' . implode('', array_map(function($n){return strtoupper(substr($n,0,1));}, explode(' ', trim(Auth::user()->name)))) . '</span>' 
+            : '' 
+        !!}
+        </div>
+        </a>
+      
+        @endauth
+        
+        @guest
+        <a href="{{route('login')}}" class="button button-filled">Log in</a>
+        @endguest
+
       </div>
     </div>
 
@@ -57,7 +97,11 @@
       <div class="settings-wrapper">
         <div class="settings-body">
           <h1>Settings</h1>
-          <form class="settings-form">
+          <form method="post" class="settings-form" 
+          action="{{route('profile.update', Auth::user()->id)}}"
+          enctype="multipart/form-data"
+          >
+          @csrf
             <label>Profile picture</label>
             <div
               class="input-primary settings-input-file"
@@ -65,7 +109,13 @@
             >
               <img
                 id="profileImage"
-                src="/resources/images/user.png"
+                {{
+                Auth::user()->avatar? 'src='.asset('storage/' . Auth::user()->avatar) : ''
+                }} 
+                {{
+                !Auth::user()->avatar? 'style=display:none;' : ''
+                }} 
+                
                 alt="upload"
               />
               <div class="edit-button-container">
@@ -78,6 +128,7 @@
                   type="file"
                   id="fileInput"
                   style="display: none"
+                  name="avatar"
                   accept="image/*"
                 />
               </div>
@@ -89,7 +140,8 @@
               type="text"
               id="name"
               name="name"
-              required
+              value="{{Auth::user()->name}}"
+              
             />
             <label>Email</label>
             <input
@@ -97,43 +149,47 @@
               type="email"
               id="email"
               name="email"
-              required
+              value="{{Auth::user()->email}}"
+              
             />
             <label>Password</label>
             <div class="password-wrapper">
               <input
                 style="width: 100%"
+                minlength="8"
                 class="input-primary input-password"
                 type="password"
                 id="password"
                 name="password"
-                required
+                
+                
                 placeholder=""
               />
               <div class="toggle eye-toggle">
                 <i class="fa fa-eye" id="togglePassword"></i>
               </div>
             </div>
-            <button class="button button-filled">Save Changes</button>
+            <input type="hidden" name="_method" value="PATCH" />
+            <button type="submit" class="button button-filled">Save Changes</button>
           </form>
         </div>
         <div class="profile-body">
           <h1>Profile Details</h1>
           <div class="profile-body-scores">
             <div>
-              <h6>36</h6>
+              <h6>{{$likesToPosts}}</h6>
               <p>Likes</p>
             </div>
             <div>
-              <h6>108</h6>
+              <h6>{{$likes}}</h6>
               <p>Posts Liked</p>
             </div>
             <div>
-              <h6>18</h6>
+              <h6>{{$repliesToPosts}}</h6>
               <p>Replies</p>
             </div>
             <div>
-              <h6>22</h6>
+              <h6>{{$replies}}</h6>
               <p>Posts Replied</p>
             </div>
           </div>
@@ -155,7 +211,9 @@
           <h5>What's happening?!</h5>
           <span class="close">&times;</span>
         </div>
-        <form class="modal-form" id="postForm">
+        <form class="modal-form" id="postForm"
+       
+        >
           <label for="title">Title:</label>
           <input
             type="text"
@@ -219,8 +277,11 @@
               );
               container.style.padding = "0"; // Set padding to 0
               container.style.backgroundColor = "white"; // Set background color to white
+              document.getElementById("profileImage").style.display = "block";
             };
             reader.readAsDataURL(this.files[0]); // Read the file as a Data URL
+          
+          
           }
         });
 
@@ -228,7 +289,7 @@
       // Get modal elements
       var modal = document.getElementById("postModal");
       var modalOverlay = document.getElementById("modalOverlay");
-      var btn = document.querySelector(".navbar-right .button"); // Assumes first button is the create post button
+      // var btn = document.querySelector(".navbar-right .button"); // Assumes first button is the create post button
       var span = document.getElementsByClassName("close")[0];
 
       // Open the modal

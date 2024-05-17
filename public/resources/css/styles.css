@@ -26,6 +26,8 @@
   border-radius: 1px;
 }
 
+
+
 a.button {
   text-decoration: none;
   
@@ -49,8 +51,16 @@ a.button {
   border: 1px solid black;
   color: white;
 }
+.button:disabled {
+  cursor: not-allowed;
+  background-color: red;
+  border: none;
 
-.button-filled:hover {
+}
+
+
+
+.button-filled:hover:not(:disabled) {
   background-color: white;
   color: black;
 }
@@ -169,4 +179,15 @@ a.button {
 .modal-form button {
   margin-top: 50px;
   padding: 12px;
+}
+
+
+.error {
+  
+  font-size: 0.8rem;
+  color: var(--danger-color);
+  margin-top: 7px;
+
+  font-weight: 500;
+
 }

@@ -1,3 +1,8 @@
+:root {
+  --avatar-size: 40px;
+ 
+}
+
 .navbar {
   display: flex;
   align-items: center;
@@ -15,6 +20,21 @@
   font-size: 1.5rem;
   font-weight: 600;
 }
+.navbar a {
+  text-decoration: none;
+  color: black;
+
+}
+.navbar-right a{
+  color: white;
+
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
 
 .navbar-right > .button {
   padding: 10px 15px;
@@ -53,7 +73,7 @@
   font-weight: 300;
 }
 
-.top-titles > input {
+.top-titles  input {
   outline: none;
   border-bottom: 1px solid black;
   border-top: none;
@@ -65,7 +85,7 @@
   margin-top: 80px;
 }
 
-.top-titles > input::placeholder {
+.top-titles  input::placeholder {
   font-size: 20px;
 }
 
@@ -218,12 +238,12 @@
   padding-bottom: 10px;
 }
 
-.post-right-bottom > div {
+.post-right-bottom  div {
   display: flex;
   align-items: center;
   margin-right: 16px;
 }
-.post-right-bottom > div > img {
+.post-right-bottom  div > img {
   width: 15px;
   height: 15px;
   object-fit: contain;
@@ -232,11 +252,27 @@
   cursor: pointer;
 }
 
-.post-right-bottom > div > img:hover {
+.post-right-bottom div >img[data-nonclickable] {
+  cursor:  default;
+
+}
+.post-right-bottom div >img[data-disabled] {
+  cursor:not-allowed;
+  opacity: 0.6;
+}
+
+
+.post-right-bottom a {
+  text-decoration: none;
+  color: black;
+
+}
+.post-right-bottom div > img:hover:not([data-nonclickable]):not([data-disabled]) {
   transform: scale(1.2);
 }
 
-.post-right-bottom > div > p {
+
+.post-right-bottom  div > p {
   font-size: 14px;
 }
 
@@ -249,6 +285,10 @@
 
 .pagination {
   display: flex;
+}
+.pagination-wrapper a {
+  text-decoration: none;
+  color: black;
 }
 .pagination-box {
   padding: 10px 15px;
@@ -280,6 +320,8 @@
   background-color: black;
   color: white;
 }
+
+
 
 .footer {
   background-color: #fcb969;
@@ -318,3 +360,28 @@
   text-decoration: underline;
   opacity: 0.8;
 }
+
+
+
+
+
+.circle {
+  background-color: #ffeeee;
+  border-radius: 50%;
+  height: var(--avatar-size);
+  text-align: center;
+  width: var(--avatar-size);
+  margin-left: 7px;
+  background-size: cover;
+  background-position: center;
+}
+
+.initials {
+  font-size: calc(var(--avatar-size) / 2);
+  line-height: 1;
+  position: relative;
+  top: calc(var(--avatar-size) / 4); 
+}
+
+
+

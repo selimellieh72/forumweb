@@ -3,72 +3,43 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reply;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class ReplyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-        return view('replies.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-        return view('replies.create');
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
         $request->validate([
-            'content' => 'required',
+            'reply' => 'required',
         ]);
+
+        $post->replies()->create([
+            'reply' => $request->reply,
+            'user_id' => auth()->id(),
+        ]);
+
+
+
+        return back();
 
         
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Reply $reply)
-    {
-        //
-        $request->validate([
-            'content' => 'required',
-        ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Reply $reply)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Reply $reply)
-    {
-        //
-    }
-
+   
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Reply $reply)
     {
-        //
+        // check if the user is the owner of the reply or an admin
+        if (auth()->id() === $reply->user_id || auth()->user()->role === 'admin') {
+            $reply->delete();
+        }
+        return back();
     }
 }

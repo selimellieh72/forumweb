@@ -11,16 +11,27 @@ class Post extends Model
 
     public $fillable = ['title', 'description'];
 
-    public function likedUsers() {
-        return $this->hasManyThrough(
-            'App\Models\User',
-            'App\Models\PostUsers',
-            'post_id',
-            'id',
-            'id',
-            'user_id'
-            
-        );
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
+    public function likedUsers()
+    {
+        return $this->belongsToMany(User::class, 'post_liked_user');
+    }
+
+    public function viewedUsers()
+    {
+        return $this->belongsToMany(User::class, 'post_viewed_user');
+    }
+
+
+
 }
 

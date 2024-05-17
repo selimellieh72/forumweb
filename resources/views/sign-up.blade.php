@@ -82,7 +82,9 @@
               Dive Into Discussions, Engage with Enthusiasts, Share Your Stories
             </h6>
           </div>
-          <form method="post" class="signup-container-form">
+          <form method="post" class="signup-container-form" 
+          enctype="multipart/form-data"
+          >
             @csrf
             <div
               class="input-primary signup-input-file"
@@ -104,6 +106,7 @@
                   id="fileInput"
                   style="display: none"
                   accept="image/*"
+                  name="avatar"
                 />
               </div>
             </div>
@@ -130,6 +133,7 @@
                 type="password"
                 id="password"
                 name="password"
+                minlength="8"
                 required
                 placeholder="Password"
               />
@@ -137,6 +141,9 @@
                 <i class="fa fa-eye" id="togglePassword"></i>
               </div>
             </div>
+            @error('error')
+            <span class="error">{{$message}}</span>
+            @enderror
             <button class="button button-filled">Create Account</button>
           </form>
         </div>

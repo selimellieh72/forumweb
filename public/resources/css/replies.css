@@ -95,3 +95,36 @@
   padding: 10px 40px;
   margin-top: 20px;
 }
+
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.flex .button {
+  padding: 10px 40px;
+  margin-top: 20px;
+  background-color: red;
+  border: none;
+  color: white;
+  
+}
+
+.flex .button.positive {
+  background-color: #3f51b5;
+}
+
+.flex .button:hover {
+  opacity: 0.8;
+}
+.post-right-upper button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: red;
+  border: none;
+  color: white;
+ 
+}

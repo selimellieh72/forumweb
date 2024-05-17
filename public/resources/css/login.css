@@ -94,15 +94,6 @@
   font-style: italic;
 }
 
-.error {
-  
-  font-size: 0.8rem;
-  color: var(--danger-color);
-  margin-top: 7px;
-
-  font-weight: 500;
-
-}
 
 .main-container-form .button {
   width: 100%;

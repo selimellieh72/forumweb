@@ -66,7 +66,7 @@
             </div>
           </div>
           <p class="forgot-password">Forgot Password?</p>
-          @error('email')
+          @error('error')
             <span class="error">{{$message}}</span>
           @enderror
           <button class="button button-filled">Log In to Forum</button>
